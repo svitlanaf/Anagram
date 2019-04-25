@@ -22,9 +22,7 @@ namespace Anagram
         Console.WriteLine("Enter a word");
         string word = Console.ReadLine();
         Console.WriteLine("Enter some words");
-        // string word = "beard";
         string words = Console.ReadLine();
-        // string words = "bread hello";
         string [] splitWords = words.Split(' ');
 
         foreach (string w in splitWords)
@@ -32,6 +30,10 @@ namespace Anagram
           if (IsAnagram(word, w) == true)
           {
             Console.WriteLine("Words " + word + " and " + w + " are anagrams");
+          }
+          else
+          {
+            Console.WriteLine("Words " + word + " and " + w + " are not anagrams");
           }
         }
       }
