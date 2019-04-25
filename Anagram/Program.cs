@@ -1,45 +1,55 @@
 using System;
+using System.Linq;
+
 namespace Anagram
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-           //Receive Words from User
-            Console.Write("Enter first word:");
-            string word1 = Console.ReadLine();
-            Console.Write("Enter second word:");
-            string word2 = Console.ReadLine();
+      static bool IsAnagram(string word1, string word2)
+      {
+        char[] charArray1 = word1.ToLower().ToCharArray();
+        Array.Sort(charArray1);
 
-            //Add optional validation of input words if needed.
-            //.....
+        char[] charArray2 = word2.ToLower().ToCharArray();
+        Array.Sort(charArray2);
 
-            //step 1
-            char[] char1 = word1.ToLower().ToCharArray();
-            char[] char2 = word2.ToLower().ToCharArray();
+        return charArray1.SequenceEqual(charArray2);
+      }
 
-            //Step 2
-            Array.Sort(char1);
-            Array.Sort(char2);
-
-            //Step 3
-            string NewWord1 = new string(char1);
-            string NewWord2 = new string(char2);
-
-            //Step 4
-            //ToLower allows to compare the words in same case, in this case, lower case.
-            //ToUpper will also do exact same thing in this context
-            if (NewWord1 == NewWord2)
-            {
-                Console.WriteLine("Yes! Words \"{0}\" and \"{1}\" are Anagrams", word1, word2);
-            }
-            else
-            {
-                Console.WriteLine("No! Words \"{0}\" and \"{1}\" are not Anagrams", word1, word2);
-            }
-
-            //Hold Console screen alive to view the results.
-            Console.ReadLine();
-        }
+      static void Main()
+      {
+        Console.WriteLine(IsAnagram("abc", "abc"));
+      }
     }
-}  
+
+        // static void Main(string[] args)
+        // {
+        //     Console.WriteLine("Enter a word:");
+        //     string word1 = Console.ReadLine();
+        //     Console.WriteLine("Enter some words:");
+        //     string words = Console.ReadLine();
+        //
+        //     char[] char1 = word1.ToLower().ToCharArray();
+        //
+        //
+        //     char[] chars = words.ToLower().ToCharArray();
+        //
+        //     Array.Sort(char1);
+        //     Array.Sort(chars);
+        //
+        //     string NewWord1 = new string(char1);
+        //     string NewWord2 = new string(char2);
+        //
+        //     if (NewWord1 == NewWord2)
+        //     {
+        //         Console.WriteLine("Yes! Words " + word1 + " and " + word2 + " are Anagrams");
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("No! Words " + word1 + " and " + word2 + "are not Anagrams");
+        //     }
+        //
+        //     Console.ReadLine();
+        // }
+    // }
+}
